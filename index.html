@@ -7,7 +7,6 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLBDM39JH7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -18,7 +17,6 @@
     </script>
 
     <style>
-        /* --- CSS --- */
         :root {
             --red: #D42426;
             --dark-red: #8B0000;
@@ -38,11 +36,10 @@
             font-family: 'Poppins', sans-serif;
             background: #050a14;
             color: var(--white);
-            overflow: hidden; /* Empêche le scroll pendant l'animation */
+            overflow: hidden; 
             height: 100vh;
         }
 
-        /* Arrière-plan avec image de sapins */
         .hero {
             height: 100vh;
             width: 100%;
@@ -79,7 +76,6 @@
             font-weight: 300;
         }
 
-        /* Compte à rebours */
         #countdown {
             display: flex;
             gap: 15px;
@@ -111,7 +107,6 @@
             font-size: 0.8rem;
         }
 
-        /* Bouton */
         .cta-button {
             background: var(--gold);
             color: #333;
@@ -131,7 +126,6 @@
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
         }
 
-        /* Animation de la neige */
         #snow-container {
             position: fixed;
             top: 0;
@@ -177,16 +171,12 @@
     </section>
 
     <script>
-        /* --- JAVASCRIPT --- */
-
-        // 1. Gestion du Compte à rebours (Cible: 25 Décembre 2025)
         function updateCountdown() {
             const currentYear = new Date().getFullYear();
             const targetDate = new Date(`December 25, ${currentYear} 00:00:00`).getTime();
             const now = new Date().getTime();
             const diff = targetDate - now;
 
-            // Si Noël est passé cette année, on vise l'année prochaine (optionnel)
             const finalDiff = diff < 0 ? new Date(`December 25, ${currentYear + 1} 00:00:00`).getTime() - now : diff;
 
             const days = Math.floor(finalDiff / (1000 * 60 * 60 * 24));
@@ -201,22 +191,19 @@
         }
 
         setInterval(updateCountdown, 1000);
-        updateCountdown(); // Appel immédiat au chargement
+        updateCountdown(); 
 
-        // 2. Gestion de la neige
         function createSnowflake() {
             const snowContainer = document.getElementById('snow-container');
             const snowflake = document.createElement('div');
             
-            // On alterne entre deux styles de flocons
             const icons = ['❄', '❅', '❆', '•'];
             snowflake.innerHTML = icons[Math.floor(Math.random() * icons.length)];
             
             snowflake.classList.add('snowflake');
             
-            // Propriétés aléatoires
             const startX = Math.random() * window.innerWidth;
-            const duration = Math.random() * 3 + 4 + 's'; // Entre 4 et 7 secondes
+            const duration = Math.random() * 3 + 4 + 's';
             const opacity = Math.random() * 0.7 + 0.3;
             const size = Math.random() * 15 + 10 + 'px';
 
@@ -228,13 +215,10 @@
 
             snowContainer.appendChild(snowflake);
 
-            // Nettoyage du DOM
             setTimeout(() => {
                 snowflake.remove();
             }, 7000);
         }
-
-        // Génère un flocon tous les 150ms
         setInterval(createSnowflake, 150);
     </script>
 </body>
